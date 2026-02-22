@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VC Intelligence Interface + Live Enrichment (MVP)
 
-## Getting Started
+## Overview
+This project implements a thesis-first VC discovery interface with a structured workflow:
 
-First, run the development server:
+Discover → Open Profile → Enrich → Analyze → Save → Export
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The system demonstrates:
+- Searchable companies page
+- Structured company profiles
+- Save-to-list functionality (localStorage)
+- Export lists (JSON)
+- Server-side enrichment route scaffolded
+- Secure environment variable handling
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture
+- Next.js App Router
+- Server-side API routes for enrichment (/api/enrich)
+- Environment variables for API keys (never exposed client-side)
+- Local caching strategy for enrichment results
+- Production-ready routing structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Live Enrichment
+Enrichment is implemented via a secure server endpoint.
+The system is designed to:
+- Fetch public website data
+- Extract summary, keywords, derived signals
+- Display sources and timestamps
+- Cache results per company
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Due to time-boxing (8-hour constraint), enrichment pipeline is scaffolded and structured for production deployment.
 
-## Learn More
+## Deployment
+Designed for Vercel deployment.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment Variables
+RAPIDAPI_KEY=your_key_here
+BASE_URL=http://localhost:3000
